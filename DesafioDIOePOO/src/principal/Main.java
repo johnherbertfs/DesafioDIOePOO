@@ -1,4 +1,4 @@
-package br.com.dio.desafio.dominio;
+package principal;
 
 public class Main {
 
