@@ -2,29 +2,44 @@ package br.com.dio.desafio.dominio;
 
 import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 public class Dev {
 	
 	
 	private String nome;
-	private Set<Conteudo> conteudoInscritos = new LinkedHashSet<Conteudo>();
-	private Set<Conteudo> conteudoConcluidos = new LinkedHashSet<Conteudo>();
+	private Set<Conteudo> conteudosInscritos = new LinkedHashSet<Conteudo>();
+	private Set<Conteudo> conteudosConcluidos = new LinkedHashSet<Conteudo>();
 	
 	
 	
-	public void inscreverBootcamp() {
+	public void inscreverBootcamp(Bootcamp c) {
+		
+		this.conteudosInscritos.addAll(c.getConteudos());
+		c.getDevInscritos().add(this);
 		
 	}
 	
 	
 	public void progredir() {
 		
+		Optional<Conteudo> conteudo = this.conteudosInscritos.stream().findFirst();
+		
+		if ( conteudo.isPresent() ) { 
+			this.conteudosConcluidos.add(conteudo.get());
+			this.conteudosInscritos.remove(conteudo.get());
+		}
+		else {
+			System.err.println("Voce ainda nao esta matriculado/inscrito em conteudo algum!");
+		}
 		
 	}
 	
 	
-	public void calcularXP() {
+	public double calcularXP() {
+		
+		return this.conteudosConcluidos.stream().mapToDouble(conteudo -> conteudo.calcularXP()).sum();
 		
 		
 	}
@@ -43,28 +58,28 @@ public class Dev {
 
 
 	public Set<Conteudo> getConteudoInscritos() {
-		return conteudoInscritos;
+		return conteudosInscritos;
 	}
 
 
 	public void setConteudoInscritos(Set<Conteudo> conteudoInscritos) {
-		this.conteudoInscritos = conteudoInscritos;
+		this.conteudosInscritos = conteudoInscritos;
 	}
 
 
 	public Set<Conteudo> getConteudoConcluidos() {
-		return conteudoConcluidos;
+		return conteudosConcluidos;
 	}
 
 
 	public void setConteudoConcluidos(Set<Conteudo> conteudoConcluidos) {
-		this.conteudoConcluidos = conteudoConcluidos;
+		this.conteudosConcluidos = conteudoConcluidos;
 	}
 
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(conteudoConcluidos, conteudoInscritos, nome);
+		return Objects.hash(conteudosConcluidos, conteudosInscritos, nome);
 	}
 
 
@@ -77,8 +92,8 @@ public class Dev {
 		if (getClass() != obj.getClass())
 			return false;
 		Dev other = (Dev) obj;
-		return Objects.equals(conteudoConcluidos, other.conteudoConcluidos)
-				&& Objects.equals(conteudoInscritos, other.conteudoInscritos) && Objects.equals(nome, other.nome);
+		return Objects.equals(conteudosConcluidos, other.conteudosConcluidos)
+				&& Objects.equals(conteudosInscritos, other.conteudosInscritos) && Objects.equals(nome, other.nome);
 	}
 	
 	
