@@ -14,11 +14,22 @@ public class Dev {
 	
 	
 	
-	public void inscreverBootcamp(Bootcamp c) {
+	
+	public Dev() {
 		
+	}
+	
+	public Dev(String nome) {
+		this.nome = nome;
+	}
+	
+	
+	
+	
+	
+	public void inscreverBootcamp(Bootcamp c) {
 		this.conteudosInscritos.addAll(c.getConteudos());
 		c.getDevInscritos().add(this);
-		
 	}
 	
 	
@@ -38,10 +49,7 @@ public class Dev {
 	
 	
 	public double calcularXP() {
-		
 		return this.conteudosConcluidos.stream().mapToDouble(conteudo -> conteudo.calcularXP()).sum();
-		
-		
 	}
 
 	

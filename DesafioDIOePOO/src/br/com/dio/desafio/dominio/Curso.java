@@ -26,7 +26,7 @@ public class Curso extends Conteudo {
 
 	@Override
 	public String toString() {
-		return "Curso [titulo=" + this.getTitulo() + ", descricao=" + this.getDescricao() + ", cargaHoraia=" + cargaHoraia + "]";
+		return "Curso [titulo=" + this.getTitulo() + ", descricao=" + this.getDescricao() + ", cargaHoraia=" + cargaHoraia + "]\n";
 	}
 
 

@@ -18,43 +18,52 @@ public class Bootcamp {
 	
 	
 	
+	public Bootcamp() {
+	}
+	
+	public Bootcamp(String nome, String descricao) {
+		this.nome = nome;
+		this.descricao = descricao;
+	}
+	
+	
+	
 	
 	public String getNome() {
 		return nome;
 	}
-	
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 	
+	
 	public String getDescricao() {
 		return descricao;
 	}
-	
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
 	
+	
 	public Set<Dev> getDevInscritos() {
 		return devInscritos;
 	}
-	
 	public void setDevInscritos(Set<Dev> devInscritos) {
 		this.devInscritos = devInscritos;
 	}
 	
+	
 	public Set<Conteudo> getConteudos() {
 		return conteudos;
 	}
-	
 	public void setConteudos(Set<Conteudo> conteudos) {
 		this.conteudos = conteudos;
 	}
 	
+	
 	public LocalDate getDataInicial() {
 		return dataInicial;
 	}
-	
 	public LocalDate getDataFinal() {
 		return dataFinal;
 	}
