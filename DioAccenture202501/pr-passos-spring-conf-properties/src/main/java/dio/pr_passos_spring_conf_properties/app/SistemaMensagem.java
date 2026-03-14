@@ -1,28 +1,22 @@
 package dio.pr_passos_spring_conf_properties.app;
 
-import java.util.List;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
-public class SistemaMensagem {
+@Component
+public class SistemaMensagem implements CommandLineRunner {
 	
 	
-	@Value("${nome}")
-	private String nome;
+	@Autowired
+	private Remetente remetente;
 	
-	@Value("${email}")
-	private String email;
-	
-	@Value("${telefones}")
-	private List<String> telefones;
-
-	
-
-	
-	
+	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("Mensagem enviada por:  " + nome + " | " + email + " | "+ telefones.toString());
+		System.out.println("Mensagem enviada por:  " + remetente.getNome() + " | " + remetente.getEmail() + " | " + 
+							remetente.getTelefones().toString() + " | " + remetente.getEndereco());
 		System.out.println("Seu cadastro foi aprovado!");
 		
 	}
