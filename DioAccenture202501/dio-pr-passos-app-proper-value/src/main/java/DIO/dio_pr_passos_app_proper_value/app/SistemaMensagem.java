@@ -29,6 +29,9 @@ public class SistemaMensagem implements CommandLineRunner {
 	
 	@Value("${telefones}")
 	private List<String> telefones;
+	
+	@Value("${endereco:SEM ENDERECO CADASTRADO OU ENCONTRADO}")
+	private String endereco; // esse campo nao no arquivo application.properties em /resources mas a anotacao coloca o padrao
 
 	
 
@@ -37,7 +40,7 @@ public class SistemaMensagem implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("Mensagem enviada por:  " + nome + " | " + email + " | "+ telefones.toString());
+		System.out.println("Mensagem enviada por:  " + nome + " | " + email + " | "+ telefones.toString() + " | " + endereco);
 		System.out.println("Seu cadastro foi aprovado!");
 		
 	}
