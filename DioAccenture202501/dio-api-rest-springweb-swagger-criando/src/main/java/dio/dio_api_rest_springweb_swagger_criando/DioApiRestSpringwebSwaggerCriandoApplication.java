@@ -11,6 +11,7 @@ public class DioApiRestSpringwebSwaggerCriandoApplication {
 		System.out.println("|||||||||||||||||||||||||||||  AULA CRIACAO DE API REST: CRIANDO UMA API  |||||||||||||||||||||||||||||");
 		
 		SpringApplication.run(DioApiRestSpringwebSwaggerCriandoApplication.class, args);
+		
 	}
 
 }
