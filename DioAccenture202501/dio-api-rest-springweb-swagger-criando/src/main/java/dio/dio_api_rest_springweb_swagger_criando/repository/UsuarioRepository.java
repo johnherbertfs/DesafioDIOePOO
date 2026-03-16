@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import dio.dio_api_rest_springweb_swagger_criando.handler.BusinessException;
 import dio.dio_api_rest_springweb_swagger_criando.model.Usuario;
 
 
@@ -16,6 +17,10 @@ public class UsuarioRepository {
 	
 	
 	public void save(Usuario usuario) {
+		
+		if (usuario.getUsername() == null) {
+			throw new BusinessException("Campo login ou username e necessario!!!!!!!!!!!!");
+		}
 		
 		if( usuario.getId_usuario() == null ) {
 			System.out.println("SAVE - Recebendo usuario no repositorio de dados!");
