@@ -49,6 +49,10 @@ public class WebSecurityConfig  {
     }*/
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+		
+		// AJUSTAR A SEGURANCA PARA OUTRAS ROLE E USUARIO
+		// AJUSTAR PARA SEGURANCA PARA CADA VERBO:  POST, GET, etc.
+		
 	    http
 	        .authorizeHttpRequests(auth -> auth
 	            .requestMatchers("/").permitAll()       // rotas públicas AJUSTAR TUDO
